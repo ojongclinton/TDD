@@ -50,6 +50,8 @@ class TestHangman {
 	@Test
 	void test_lengthOfFetchedWordRandom() {
 		String word = hangman.fetchWord(requestedLength);
+		System.out.print("The word is : ");
+		System.out.print(word);
 		assertEquals(requestedLength, word.length());
 	}
 	
