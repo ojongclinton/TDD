@@ -104,8 +104,17 @@ class TestHangman {
 	}
 	
 	@Test
-	void test_illegalExpressionTHrownOnInvalidInput(){
-		assertThrows(IllegalArgumentException.class, () -> hangman.fetchClue("pizza", "-----", '1'));
+	void test_whenInvalidGuessThenFetchClueThrowsException(){
+		assertThrows(IllegalArgumentException.class, 
+						() -> hangman.fetchClue("pizza", "-----", '1'));
+	}
+	
+	@Test
+	void test_whenInvalidGuessThenFetchClueThrowsExceptionMessage() {
+		Exception exception = assertThrows(IllegalArgumentException.class, 
+						() -> hangman.fetchClue("pizza", "-----", '1'));
+		
+		assertEquals("Invalid Character", exception.getMessage());
 	}
 }
 
