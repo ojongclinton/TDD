@@ -103,6 +103,10 @@ class TestHangman {
 		assertEquals("-----", newClue);
 	}
 	
+	@Test
+	void test_illegalExpressionTHrownOnInvalidInput(){
+		assertThrows(IllegalArgumentException.class, () -> hangman.fetchClue("pizza", "-----", '1'));
+	}
 }
 
 
