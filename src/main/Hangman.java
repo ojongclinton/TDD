@@ -13,6 +13,7 @@ public class Hangman {
 
 	public Set<String> usedWordsSet = new HashSet<>();
 	public List<String> wordsList = new ArrayList<>();
+	public Integer remainingTrails = 10;
 
 	/**countAlphabet() returns how many times the alphabet 
 	 * appears in the word.
@@ -89,14 +90,18 @@ public class Hangman {
 	 * @return
 	 */
 	public String fetchClue(String word, String clue, char guess) {
+		Boolean res = false;
 		if(guess > 'A' && guess <= 'Z') guess+=32;
 		if(guess < 'a' || guess > 'z') throw new IllegalArgumentException("Invalid Character");
 		StringBuilder newClue = new StringBuilder();
 		for (int i = 0; i< word.length(); i++) {
-			if (guess == word.charAt(i) && guess != clue.charAt(i))
-			newClue.append(guess);
+			if (guess == word.charAt(i) && guess != clue.charAt(i)) {
+				res = true;
+				newClue.append(guess);
+			}
 			else newClue.append(clue.charAt(i));
 		}
+		if(!res) this.remainingTrails--;
 		return newClue.toString();
 	}
 }

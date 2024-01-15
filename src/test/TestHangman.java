@@ -116,6 +116,40 @@ class TestHangman {
 		
 		assertEquals("Invalid Character", exception.getMessage());
 	}
+	
+	@Test
+	void test_numberOfRemainingTrialsBeforeAGuess() {
+		Hangman hangman = new Hangman();
+		assertEquals(10, hangman.remainingTrails);
+	}
+	
+	@Test
+	void test_numberOfRemainingTrialsAfterFirstCorrectGuess() {
+		Hangman hangman = new Hangman();
+		String clue = hangman.fetchClue("naruto");
+		String newClue = hangman.fetchClue("naruto", clue, 'o');
+		
+		assertEquals(10, hangman.remainingTrails);
+	}
+	
+	@Test
+	void test_numberOfRemainingTrialsAfterSecondCorrectGuess() {
+		Hangman hangman = new Hangman();
+		String clue = hangman.fetchClue("naruto");
+		String newClue = hangman.fetchClue("naruto", clue, 'o');
+		String newClue2 = hangman.fetchClue("naruto", clue, 't');
+		
+		assertEquals(10, hangman.remainingTrails);
+	}
+	
+	@Test
+	void test_numberOfRemainingTrialsAfterInCorrectGuess() {
+		Hangman hangman = new Hangman();
+		String clue = hangman.fetchClue("naruto");
+		String newClue = hangman.fetchClue("naruto", clue, 's');
+		
+		assertEquals(9, hangman.remainingTrails);
+	}
 }
 
 
