@@ -101,7 +101,7 @@ public class Hangman {
 			}
 			else newClue.append(clue.charAt(i));
 		}
-		if(!res) this.remainingTrails--;
+		this.remainingTrails--;
 		return newClue.toString();
 	}
 }

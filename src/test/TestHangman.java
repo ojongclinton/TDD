@@ -55,10 +55,7 @@ class TestHangman {
 		assertEquals(requestedLength, word.length());
 	}
 	
-	/**tests that fetchWord returns a unique word 
-	 * every time across 100 rounds of
-	 * of Hangman.
-	 */
+
 	@Test
 	void test_uniquenessOfFetchedWord() {
 		Set<String> usedwordsSet = new HashSet<>();
